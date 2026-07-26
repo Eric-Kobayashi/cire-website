@@ -3,344 +3,189 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Cire — Company of Informatics and Research Engineering</title>
-  <meta name="description" content="Pairing research scientists with consulting research engineers. Redistributing human intelligence in science at the advent of the AI era." />
+  <title>cire.works</title>
+  <meta name="description" content="Cire, Company of Informatics and Research Engineering, is the initiative consulting firm advocating for a redistribution of human intelligence in science at the advent of the AI era." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
-  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
-  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body x-data>
+<body>
 
-  <header class="site-nav" x-data="{ solid: false }" @scroll.window="solid = window.scrollY > 40" :class="{ 'is-solid': solid }">
-    <a class="brand" href="#top">Cire</a>
-    <a class="nav-cta" href="https://www.linkedin.com/in/eric-hidari-40841a161/" target="_blank" rel="noopener">Connect</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <header class="site-nav">
+    <a class="brand" href="#top">cire.works</a>
+    <a class="founder" href="https://eric-kobayashi.github.io/mywebsite" target="_blank" rel="noopener">Eric Hidari</a>
+    <nav class="rail" aria-label="Sections">
+      <a href="#session-1" data-rail="session-1"><span class="rail-label">A New Era</span><span class="rail-dot"></span></a>
+      <a href="#session-2" data-rail="session-2"><span class="rail-label">Human Interaction</span><span class="rail-dot"></span></a>
+      <a href="#session-3" data-rail="session-3"><span class="rail-label">Research Engineer</span><span class="rail-dot"></span></a>
+      <a href="#ending" data-rail="ending"><span class="rail-label">Cire Works</span><span class="rail-dot"></span></a>
+    </nav>
   </header>
 
   <main id="top">
 
-    <!-- HERO -->
-    <section class="hero">
+    <section class="hero" data-hero>
       <div class="hero-atmosphere" aria-hidden="true"></div>
-      <div class="hero-inner"
-           x-data="{ show: false }"
-           x-init="requestAnimationFrame(() => show = true)"
-           :class="{ 'is-in': show }">
-        <p class="brand-mark">Cire</p>
-        <h1>Redistributing human intelligence in science.</h1>
-        <p class="lede">At the advent of the AI era, research needs engineers who think with scientists — not tools that only predict.</p>
-        <a class="cta" href="#session-1">Begin the essay</a>
+      <div class="hero-inner">
+        <p class="brand-mark">cire.works</p>
+        <h1>Redistributing human intelligence in science</h1>
       </div>
-      <div class="scroll-hint" aria-hidden="true">
-        <span></span>
-      </div>
+      <div class="hero-cue" aria-hidden="true"><span>THE JOURNEY BEGINS</span><i></i></div>
     </section>
 
     <!-- SESSION 1 -->
-    <section id="session-1" class="session">
-      <div class="session-label"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-        Session 1
-      </div>
-      <h2 class="session-title"
-          x-data="{ inView: false }"
-          x-intersect.once="inView = true"
-          :class="{ 'is-in': inView }">
-        Advent of a new era
-      </h2>
+    <section class="session" id="session-1">
+      <div class="session-main">
+        <aside class="session-aside">
+          <span class="session-index">01</span>
+          <div class="session-track" aria-hidden="true"><span></span></div>
+          <h2 class="session-title" data-reveal>Advent of a New Era</h2>
+        </aside>
 
-      <div class="prose">
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          Research software has been predominately developed by the scientists themselves.
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          However the engineering demands in science is growing at a speed that scientists themselves are struggling to keep up.
-        </p>
-      </div>
+        <div class="session-body">
+          <div class="beat">
+            <p class="line lead" data-reveal>Research software has been predominantly developed by the scientists themselves.</p>
+            <p class="line" data-reveal>However, the engineering demands in science are growing at a speed that scientists themselves are struggling to keep up with:</p>
+            <ul class="bullet-row" role="list">
+              <li data-reveal>Growing experimental scale</li>
+              <li data-reveal>Advanced machine learning methods for analysis</li>
+              <li data-reveal>Longer analysis pipelines and increasing reliance on computing clusters</li>
+            </ul>
+          </div>
 
-      <ul class="bullet-row" role="list">
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 0">
-          Growing experimental scale
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 1">
-          Advanced machine learning methods for analysis
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 2">
-          Longer analysis pipelines and increasing reliance on HPC
-        </li>
-      </ul>
+          <div class="beat">
+            <div class="qa-pair" data-reveal>
+              <p class="line question">What have large language models such as ChatGPT brought us?</p>
+              <p class="line answer">A tool to <strong>retrieve</strong> knowledge at <strong>will</strong></p>
+            </div>
+            <div class="qa-pair" data-reveal>
+              <p class="line question">What have AI coding agents (such as Claude Code) brought us?</p>
+              <p class="line answer">A tool to generate <strong>customised</strong> software solutions at <strong>scale</strong></p>
+            </div>
+            <p class="line bridge" data-reveal>These tools will transform how scientific research is conducted.</p>
+          </div>
 
-      <div class="prose">
-        <p class="line question"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          What has large language model such as ChatGPT brought us?
-        </p>
-        <p class="line answer"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          A tool to <strong>retrieve</strong> knowledge at <strong>will</strong>
-        </p>
-        <p class="line question"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          What has AI coding agent (such as Claude Code) brought us?
-        </p>
-        <p class="line answer"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          A tool to generate <strong>customised</strong> software solution at <strong>scale</strong>
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          These tools will transform how scientific research is conducted. I envision a new way of working in science — pairing the research scientist with a consulting research engineer.
-        </p>
+          <div class="beat">
+            <p class="line statement" data-reveal>We envision a new way of working in science — pairing the research scientist with a consulting research engineer.</p>
+          </div>
+        </div>
       </div>
 
-      <figure class="full-bleed"
-              x-data="{ inView: false }"
-              x-intersect.once="inView = true"
-              :class="{ 'is-in': inView }">
-        <img src="assets/IMG_3622.jpeg" alt="Visual from Session 1 — pairing scientist and research engineer" loading="lazy" />
+      <figure class="media media--75" data-reveal data-parallax>
+        <img src="assets/scientist-engineer-pairing.jpeg" alt="A research scientist surrounded by engineering demands, then paired with a research engineer." width="1747" height="2032" loading="lazy" />
+        <figcaption>Pairing a research scientist with a research engineer.</figcaption>
       </figure>
     </section>
 
     <!-- SESSION 2 -->
-    <section id="session-2" class="session">
-      <div class="session-label"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-        Session 2
-      </div>
-      <h2 class="session-title"
-          x-data="{ inView: false }"
-          x-intersect.once="inView = true"
-          :class="{ 'is-in': inView }">
-        The indispensable human interaction
-      </h2>
+    <section class="session" id="session-2">
+      <div class="session-main">
+        <aside class="session-aside">
+          <span class="session-index">02</span>
+          <div class="session-track" aria-hidden="true"><span></span></div>
+          <h2 class="session-title" data-reveal>The Indispensable Human Interaction</h2>
+        </aside>
 
-      <div class="parallel-block">
-        <div class="parallel-col"
-             x-data="{ inView: false }"
-             x-intersect.once="inView = true"
-             :class="{ 'is-in': inView }"
-             style="--i: 0">
-          <h3>For scientific researchers</h3>
-          <p>They face research problems that require highly customised solutions.</p>
-          <ul class="bullet-stack" role="list">
-            <li>Their priority is not generalisation — make software for the masses</li>
-            <li>They have a strong requirement for software to be precise and reproducible</li>
-          </ul>
+        <div class="session-body">
+          <div class="beat">
+            <div class="parallel-block">
+              <div class="parallel-col" data-reveal>
+                <p>For scientific researchers, they are faced with research problems that require highly customised solutions:</p>
+                <ul class="bullet-stack" role="list">
+                  <li>Their priority is not generalisation (make software for the masses)</li>
+                  <li>They have a strong requirement for software to be precise and reproducible</li>
+                </ul>
+              </div>
+              <div class="parallel-col" data-reveal>
+                <p>For software engineers, as AI agentic coding is pushing for more and more decentralised software development:</p>
+                <ul class="bullet-stack" role="list">
+                  <li>There is higher value for them in being situated closer to the user.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="beat">
+            <p class="line" data-reveal>With LLM and AI, scientists fill in their gaps in engineering skills while engineers fill in their gaps in scientific domain knowledge.</p>
+            <p class="line tension" data-reveal><strong>Yet they face the problem of validation.</strong></p>
+            <p class="line" data-reveal>Language models, being ultimately statistical predictors, do not possess this level of critical analytical power. <span class="pull">They are a tool, not a partner.</span> They increase apparent productivity but do not change the velocity of human understanding.</p>
+          </div>
+
+          <div class="beat">
+            <p class="line question" data-reveal>What inspiration can we draw from what has been working in the past?</p>
+            <p class="line" data-reveal>Scientists rely on peer review, software engineers on code review. Yet the review is not just about the end point, but also the journey along the way.</p>
+            <p class="line" data-reveal>Every scientific discussion, every sharing of results regardless of success or failure — they matter because these reviews come from different perspectives. Prof Itai Yanai has a great article on this topic: <a href="https://www.nature.com/articles/s41587-023-02074-2" target="_blank" rel="noopener">It takes two to think</a></p>
+            <p class="line punch" data-reveal><strong>Human–intelligence interaction</strong>, not AI, is what has been pushing the boundary of science forward so far.</p>
+          </div>
         </div>
-        <div class="parallel-col"
-             x-data="{ inView: false }"
-             x-intersect.once="inView = true"
-             :class="{ 'is-in': inView }"
-             style="--i: 1">
-          <h3>For software engineers</h3>
-          <p>As AI agentic coding pushes decentralised software development, there is higher value in being situated closer to the user.</p>
-        </div>
       </div>
 
-      <div class="prose">
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          With LLM and AI, scientists fill in their gaps of engineering skills while engineers fill in their gaps of scientific domain knowledge.
-        </p>
-        <p class="line emphasis"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          Yet they face the problem of validation.
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          Language models, being ultimately statistical predictors, do not possess this level of critical analytical power. They are a tool not a partner. They increase apparent productivity but do not change the velocity of human understanding.
-        </p>
-        <p class="line question"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          What inspirations can we draw from what has been working in the past?
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          Scientists rely on peer review, software engineers on code review. Yet the review is not just about the end point, but also the journey along the way — especially in science. Every scientific discussion, sharing of results regardless of success or failure — they matter because these reviews come from different perspectives.
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          <a href="https://www.nature.com/articles/s41587-023-02074-2" target="_blank" rel="noopener">It takes 2 to think</a>. Human intelligence, not AI, is what has been pushing the boundary of science forward so far.
-        </p>
-      </div>
-
-      <figure class="full-bleed"
-              x-data="{ inView: false }"
-              x-intersect.once="inView = true"
-              :class="{ 'is-in': inView }">
-        <img src="assets/IMG_3621.jpeg" alt="Visual from Session 2 — human interaction in scientific review" loading="lazy" />
+      <figure class="media media--60" data-reveal data-parallax>
+        <img src="assets/llm-empowered-research-engineering.jpeg" alt="LLM knowledge and coding models lower the domain knowledge barrier and prototype time, each verified by a human." width="2280" height="2125" loading="lazy" />
+        <figcaption>Each model output verified by a human on the other side of the gap.</figcaption>
       </figure>
     </section>
 
     <!-- SESSION 3 -->
-    <section id="session-3" class="session">
-      <div class="session-label"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-        Session 3
-      </div>
-      <h2 class="session-title"
-          x-data="{ inView: false }"
-          x-intersect.once="inView = true"
-          :class="{ 'is-in': inView }">
-        Not just a software engineer, but a research engineer
-      </h2>
+    <section class="session" id="session-3">
+      <div class="session-main">
+        <aside class="session-aside">
+          <span class="session-index">03</span>
+          <div class="session-track" aria-hidden="true"><span></span></div>
+          <h2 class="session-title" data-reveal>Not Just a Software Engineer, but a Research Engineer</h2>
+        </aside>
 
-      <div class="prose">
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          We redefine research engineer as a profession that architect, orchestrate and optimise the research process itself.
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          A computational solution to a research problem can be dissected into
-        </p>
-      </div>
+        <div class="session-body">
+          <div class="beat">
+            <p class="line lead" data-reveal>We redefine research engineer as a profession that architects, orchestrates and optimises the research process itself.</p>
+            <p class="line" data-reveal>A computational solution to a research problem can be dissected into:</p>
+            <ul class="bullet-row" role="list">
+              <li data-reveal>Scientific logic</li>
+              <li data-reveal>Mathematical algorithm</li>
+              <li data-reveal>Software design and engineering</li>
+            </ul>
+            <p class="line line--gap" data-reveal>A consulting research engineer is able to provide support to academic groups on all these components.</p>
+          </div>
 
-      <ul class="bullet-row" role="list">
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 0">
-          Scientific logic
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 1">
-          Mathematical algorithm
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 2">
-          Software design and engineering
-        </li>
-      </ul>
-
-      <div class="prose">
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          A consultant research engineer is able to provide support to academic groups on all these components.
-        </p>
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          An ideal research engineer is someone who:
-        </p>
-      </div>
-
-      <ul class="bullet-row stacked-mobile" role="list">
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 0">
-          A doctoral level research scientist highly experienced in computational methods
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 1">
-          Has a strong interest in technological translation into scientific research application
-        </li>
-        <li x-data="{ inView: false }"
-            x-intersect.once="inView = true"
-            :class="{ 'is-in': inView }"
-            style="--i: 2">
-          Seeks an alternative leadership route in academia focusing on method development
-        </li>
-      </ul>
-
-      <div class="prose">
-        <p class="line"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-          For the partner scientist, a research engineer is an experienced co-worker, reviewer, idea-bouncer, tech and data expert — integrated to the group and dedicated to the project.
-        </p>
+          <div class="beat">
+            <p class="line" data-reveal>An ideal research engineer is someone who:</p>
+            <div class="parallel-block parallel-block--3">
+              <div class="parallel-col" data-reveal>
+                <p>Is a doctoral-level research scientist that is highly <strong>experienced</strong> in computational methods;</p>
+              </div>
+              <div class="parallel-col" data-reveal>
+                <p>Has a strong <strong>interest</strong> in technological translation into scientific research applications;</p>
+              </div>
+              <div class="parallel-col" data-reveal>
+                <p>Is seeking an alternative <strong>leadership</strong> route in academia focusing on method development.</p>
+              </div>
+            </div>
+            <p class="line" data-reveal>For the partner scientist, a research engineer is an experienced co-worker, reviewer, idea-bouncer, tech and data expert <strong>integrated</strong> into the group and <strong>dedicated</strong> to the project.</p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- CLOSING -->
-    <section class="closing">
-      <div class="closing-atmosphere" aria-hidden="true"></div>
-      <div class="closing-inner"
-           x-data="{ inView: false }"
-           x-intersect.once="inView = true"
-           :class="{ 'is-in': inView }">
-        <p class="brand-mark">Cire</p>
-        <p class="closing-lead">
-          Company of Informatics and Research Engineering — the consulting firm motioning for a redistribution of human intelligence in science at the advent of the AI era.
-        </p>
-        <p class="line is-static">
-          We are dedicated to turn AI outputs into human knowledge in science, and we need human, not AI, to do this job.
-        </p>
-        <p class="tagline">Cire works. Follow our journey.</p>
-        <a class="cta"
-           href="https://www.linkedin.com/in/eric-hidari-40841a161/"
-           target="_blank"
-           rel="noopener">
-          Connect with Eric Hidari on LinkedIn
-        </a>
+    <!-- ENDING CHAPTER -->
+    <section class="ending" id="ending">
+      <div class="ending-inner">
+        <p class="ending-mark" data-reveal>cire.works</p>
+        <p class="line" data-reveal>Cire, <span class="full-name">company of informatics and research engineering</span>, is the initiative consulting firm advocating for a redistribution of human intelligence in science at the advent of the AI era.</p>
+        <p class="line punch" data-reveal>We are dedicated to turning AI outputs into human knowledge in science, and we need humans, not AI, to do this job.</p>
+        <p class="line tagline" data-reveal>Cire works. Follow our journey.</p>
+        <p class="line connect" data-reveal>Connect with the founder Eric Hidari on LinkedIn: <a href="https://www.linkedin.com/in/eric-hidari-40841a161/" target="_blank" rel="noopener">linkedin.com/in/eric-hidari</a></p>
       </div>
     </section>
 
   </main>
 
   <footer class="site-footer">
-    <span>© <span x-text="new Date().getFullYear()"></span> Cire</span>
+    <p>Cambridge, UK</p>
   </footer>
 
+  <script src="main.js" defer></script>
 </body>
 </html>
