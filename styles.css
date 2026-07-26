@@ -701,11 +701,20 @@ strong {
 }
 
 .ending-mark {
-  margin: 0 0 1.75rem;
+  margin: 0 0 0.55rem;
   font-family: var(--font-mark);
   font-size: clamp(1.05rem, 2vw, 1.25rem);
   letter-spacing: 0.14em;
   color: var(--accent);
+}
+
+.pronounce {
+  margin: 0 0 1.75rem;
+  font-size: 0.92rem;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+  font-style: italic;
 }
 
 .ending .line.punch {
