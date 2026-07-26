@@ -281,7 +281,7 @@ a:hover {
   font-size: clamp(0.85rem, 1.6vw, 1.05rem);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink);
   white-space: nowrap;
 }
 
@@ -292,7 +292,7 @@ a:hover {
 .hero-cue i {
   width: 1px;
   height: 3rem;
-  background: linear-gradient(180deg, var(--ink-faint), transparent);
+  background: linear-gradient(180deg, var(--ink), transparent);
   animation: cue 2.4s ease-in-out infinite;
   transform-origin: 50% 0;
 }
@@ -777,15 +777,15 @@ strong {
   font-size: 0.72rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-faint);
+  color: var(--ink);
 }
 
 .ask-label em {
   font-style: normal;
   text-transform: none;
   letter-spacing: 0.02em;
-  color: var(--ink-faint);
-  opacity: 0.75;
+  color: var(--ink-muted);
+  opacity: 0.9;
 }
 
 .ask-form input,
@@ -874,7 +874,7 @@ strong {
   font-family: var(--font-mark);
   font-size: 0.8rem;
   letter-spacing: 0.08em;
-  color: var(--ink-faint);
+  color: var(--ink);
 }
 
 /* RESPONSIVE */
