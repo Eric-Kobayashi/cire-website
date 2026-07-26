@@ -731,6 +731,129 @@ strong {
   margin-top: 1.25rem;
 }
 
+/* ASK */
+.ask {
+  border-top: 1px solid var(--line);
+  padding: clamp(3rem, 10vh, 6rem) var(--gutter) clamp(4rem, 12vh, 7rem);
+}
+
+.ask-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+.ask-prompt {
+  margin: 0 0 1.75rem;
+  color: var(--ink-muted);
+}
+
+.ask-form {
+  display: grid;
+  gap: 1.15rem;
+}
+
+.ask-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.15rem;
+}
+
+.ask-field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.ask-label {
+  font-family: var(--font-mark);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.ask-label em {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: var(--ink-faint);
+  opacity: 0.75;
+}
+
+.ask-form input,
+.ask-form textarea {
+  width: 100%;
+  margin: 0;
+  padding: 0.65rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1rem;
+  line-height: 1.5;
+  outline: none;
+  resize: vertical;
+  transition: border-color 0.2s ease;
+}
+
+.ask-form textarea {
+  min-height: 4.5rem;
+}
+
+.ask-form input:focus,
+.ask-form textarea:focus {
+  border-bottom-color: var(--accent);
+}
+
+.ask-form input::placeholder,
+.ask-form textarea::placeholder {
+  color: var(--ink-faint);
+}
+
+.ask-submit {
+  justify-self: start;
+  margin-top: 0.35rem;
+  padding: 0.55rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--accent);
+  background: none;
+  color: var(--accent);
+  font-family: var(--font-mark);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.ask-submit:hover:not(:disabled) {
+  color: #e0c89a;
+  border-bottom-color: #e0c89a;
+}
+
+.ask-submit:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.ask-status {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--accent);
+}
+
+.ask-status.is-error {
+  color: #c98a7a;
+}
+
+@media (max-width: 640px) {
+  .ask-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* FOOTER */
 .site-footer {
   padding: 0 var(--gutter) clamp(2rem, 6vh, 3.5rem);

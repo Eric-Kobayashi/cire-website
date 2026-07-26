@@ -14,6 +14,47 @@
 
   document.documentElement.classList.add(reduced ? "no-motion" : "js-motion");
 
+  const askForm = document.querySelector(".ask-form");
+  if (askForm) {
+    const status = askForm.querySelector(".ask-status");
+    const submit = askForm.querySelector(".ask-submit");
+    const question = askForm.querySelector('[name="question"]');
+    const suggestion = askForm.querySelector('[name="suggestion"]');
+    askForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!status || !submit || !question || !suggestion) return;
+      status.hidden = true;
+      status.classList.remove("is-error");
+      const hasQuestion = question.value.trim().length > 0;
+      const hasSuggestion = suggestion.value.trim().length > 0;
+      if (!hasQuestion && !hasSuggestion) {
+        status.textContent = "Add a question or a suggestion — either one is enough.";
+        status.classList.add("is-error");
+        status.hidden = false;
+        (hasQuestion ? suggestion : question).focus();
+        return;
+      }
+      submit.disabled = true;
+      try {
+        const res = await fetch(askForm.action, {
+          method: "POST",
+          body: new FormData(askForm),
+          headers: { Accept: "application/json" },
+        });
+        if (!res.ok) throw new Error("send failed");
+        askForm.reset();
+        status.textContent = "Thank you — your note reached me.";
+        status.hidden = false;
+      } catch {
+        status.textContent = "Could not send. Try again, or reach me on LinkedIn.";
+        status.classList.add("is-error");
+        status.hidden = false;
+      } finally {
+        submit.disabled = false;
+      }
+    });
+  }
+
   if (reduced) return;
 
   const clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
