@@ -9,7 +9,7 @@ However, the engineering demands in science are growing at a speed that scientis
 What have large language models such as ChatGPT brought us?
 A tool to **retrieve** knowledge at **will**
 
-What have AI coding agents (such as Claude Code) brought us?
+What have AI coding agents such as Claude Code brought us?
 A tool to generate **customised** software solutions at **scale**
 
 These tools will transform how scientific research is conducted. However, how can we maintain the validity of scientific output?
@@ -22,7 +22,7 @@ Session 2: the indispensable human interaction
 	- Their priority is not generalisation (make software for the masses)
 	- They have a strong requirement for software to be precise and reproducible
 - For software engineers, as AI agentic coding is pushing for more and more decentralised software development:
-	- There is higher value for them in being situated closer to the user.
+	- There is higher value for them in being situated closer to the user
 
 With LLM and AI, scientists fill in their gaps in engineering skills
 while engineers fill in their gaps in scientific domain knowledge.
@@ -49,9 +49,9 @@ A computational solution to a research problem can be dissected into:
 
 A consulting research engineer is able to provide support to academic groups on all these components.
 An ideal research engineer is someone who:
-- Is a doctoral-level research scientist that is highly **experienced** in computational methods;
-- Has a strong **interest** in technological translation into scientific research applications;
-- Is seeking an alternative **leadership** route in academia focusing on method development.
+- Is a doctoral-level research scientist that is highly **experienced** in computational methods
+- Has a strong **interest** in technological translation into scientific research applications
+- Is seeking an alternative **leadership** route in academia focusing on method development
 
 For the partner scientist, a research engineer is an experienced co-worker, reviewer, idea-bouncer, tech and data expert **integrated** into the group and **dedicated** to the project.
 
