@@ -12,7 +12,7 @@ A tool to **retrieve** knowledge at **will**
 What have AI coding agents (such as Claude Code) brought us?
 A tool to generate **customised** software solutions at **scale**
 
-These tools will transform how scientific research is conducted.
+These tools will transform how scientific research is conducted. However, how can we maintain the validity of scientific output?
 
 We envision a new way of working in science — pairing the research scientist with a consulting research engineer.
 ![[scientist-engineer-pairing.jpeg]]
