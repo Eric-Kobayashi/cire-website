@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 348 160" fill="none" role="img" aria-labelledby="cire-logo-title cire-logo-desc">
+  <title id="cire-logo-title">Cire</title>
+  <desc id="cire-logo-desc">Geometric wordmark for Cire, Company of Informatics and Research Engineering. Two coloured heads mark the scientist-engineer pairing.</desc>
+
+  <!-- Heads only: scientist + engineer -->
+  <g stroke-width="5.5" stroke-linecap="square">
+    <path stroke="#3d7a8c" d="M63 8 V26" />
+    <path stroke="#c46a2e" d="M215 8 V26" />
+  </g>
+
+  <g stroke="#0b0d10" stroke-width="5.5" stroke-linecap="square" stroke-linejoin="miter">
+    <!-- C -->
+    <path d="M90 54 H36 V138 H70" />
+
+    <!-- I: table -->
+    <path d="M124 90 H150 M137 90 V138 M124 138 H150" />
+
+    <!-- R: mid bar touches left; left stem does not meet top -->
+    <path d="M186 54 H244 V98 H186" />
+    <path d="M186 72 V138" />
+    <path d="M244 98 V124" />
+
+    <!-- E -->
+    <path d="M280 54 H318 M280 96 H318 M280 138 H318" />
+  </g>
+</svg>
