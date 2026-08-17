@@ -115,6 +115,47 @@ a:hover {
   color: var(--ink);
 }
 
+.page-tabs {
+  position: absolute;
+  left: 50%;
+  top: 1.15rem;
+  transform: translateX(-50%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  pointer-events: auto;
+}
+
+.page-tabs a {
+  font-family: var(--font-mark);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-muted);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.15rem;
+}
+
+.page-tabs-sep {
+  color: var(--ink-faint);
+  font-family: var(--font-mark);
+  font-size: 0.78rem;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.page-tabs a:hover {
+  color: var(--ink);
+}
+
+.page-tabs a[aria-current="page"] {
+  color: var(--ink);
+  border-bottom-color: var(--accent);
+}
+
 .founder {
   position: absolute;
   top: 1.15rem;
@@ -128,7 +169,8 @@ a:hover {
   letter-spacing: 0.04em;
 }
 
-.founder:hover {
+.founder:hover,
+.founder[aria-current="page"] {
   color: var(--ink);
 }
 
@@ -230,12 +272,18 @@ a:hover {
 }
 
 .js-motion .brand-mark,
+.js-motion .hero-portrait,
+.js-motion .hero-name,
 .js-motion .hero-tagline {
   animation: hero-in 1.2s var(--ease) both;
 }
 
+.js-motion .hero-name {
+  animation-delay: 0.12s;
+}
+
 .js-motion .hero-tagline {
-  animation-delay: 0.18s;
+  animation-delay: 0.22s;
 }
 
 @keyframes hero-in {
@@ -253,6 +301,28 @@ a:hover {
   display: block;
   width: min(20rem, 78vw);
   height: auto;
+}
+
+.hero-portrait {
+  margin: 0 auto 1.6rem;
+  width: min(15.5rem, 58vw);
+  line-height: 0;
+}
+
+.hero-portrait img {
+  width: 100%;
+  height: auto;
+  box-shadow: 0 0 0 1px rgba(232, 228, 220, 0.12);
+}
+
+.hero-name {
+  margin: 0 0 0.55rem;
+  font-family: var(--font-title);
+  font-size: clamp(2.1rem, 4.6vw, 3.15rem);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.1;
+  color: var(--ink);
 }
 
 .hero-tagline {
@@ -492,12 +562,22 @@ strong {
   margin: 1.4rem 0;
 }
 
+/* Pull the opening quote mark into the margin so the text edge stays flush */
+.line--quote {
+  text-indent: -0.5em;
+}
+
 .js-motion .line.tension[data-reveal] {
   color: color-mix(in srgb, var(--accent) calc(var(--enter, 0) * 100%), var(--ink-faint));
 }
 
 .line.punch {
   margin: 1.4rem 0 1.5rem;
+}
+
+/* Beat opens flush with its dot marker, whatever element leads it */
+.beat > :first-child {
+  margin-top: 0;
 }
 
 .line.tagline {
@@ -859,12 +939,173 @@ strong {
   }
 }
 
+/* ABOUT — compact byline, no cinematic hero */
+.about-intro {
+  padding: clamp(6.5rem, 16vh, 8.5rem) var(--gutter) 0;
+}
+
+.about-intro-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 1.5rem;
+  padding-right: clamp(1.25rem, 5vw, 4rem);
+}
+
+.about-heading {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.about-byline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 0;
+}
+
+.about-portrait {
+  margin: 0;
+  width: 7.5rem;
+  height: 7.5rem;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.about-portrait img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.about-byline p,
+.about-name {
+  margin: 0;
+  font-family: var(--font-title);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.about-name a {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.about-name a:hover {
+  color: var(--accent);
+}
+
+/* CASE STUDY */
+.page-inner .site-nav::before {
+  opacity: 1;
+}
+
+.case {
+  padding: clamp(6.5rem, 16vh, 8.5rem) var(--gutter) clamp(4rem, 12vh, 7rem);
+}
+
+.case-inner {
+  max-width: var(--wide);
+  margin: 0 auto;
+}
+
+.case-title {
+  margin: 0 0 1.75rem;
+  font-family: var(--font-title);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.12;
+}
+
+.study-tabs {
+  display: flex;
+  gap: 0.25rem;
+  margin: 0 0 2.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.study-tabs [role="tab"] {
+  appearance: none;
+  margin: 0 0 -1px;
+  padding: 0.7rem 1.05rem;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  color: var(--ink-muted);
+  font-family: var(--font-mark);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.study-tabs [role="tab"]:hover {
+  color: var(--ink);
+}
+
+.study-tabs [role="tab"][aria-selected="true"] {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.study-panel {
+  display: grid;
+  grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr);
+  gap: clamp(1.75rem, 5vw, 3.5rem);
+  align-items: start;
+}
+
+.study-logo {
+  margin: 0;
+  position: sticky;
+  top: 5.5rem;
+}
+
+.study-logo a {
+  display: block;
+}
+
+.study-logo img {
+  width: min(11rem, 100%);
+  height: auto;
+}
+
+.study-body .case-lead {
+  margin: 0 0 1.4rem;
+  max-width: var(--max);
+  font-family: var(--font-title);
+  font-size: clamp(1.35rem, 2.4vw, 1.7rem);
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--ink);
+}
+
+.study-body p {
+  margin: 0 0 1.2rem;
+  max-width: var(--max);
+}
+
+.study-body p:last-child {
+  margin-bottom: 0;
+}
+
 /* FOOTER */
 .site-footer {
   padding: 0 var(--gutter) clamp(2rem, 6vh, 3.5rem);
   text-align: center;
-  display: grid;
-  gap: 0.35rem;
 }
 
 .site-footer p {
@@ -874,17 +1115,6 @@ strong {
   letter-spacing: 0.06em;
   line-height: 1.55;
   color: var(--ink-muted);
-}
-
-.site-footer a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-
-.site-footer a:hover {
-  color: var(--ink);
-  border-bottom-color: var(--accent);
 }
 
 /* RESPONSIVE */
@@ -911,6 +1141,36 @@ strong {
     gap: 1rem;
   }
 
+  .study-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .study-logo {
+    position: static;
+    justify-self: start;
+  }
+
+  .study-logo img {
+    width: 7.5rem;
+  }
+}
+
+@media (max-width: 1040px) {
+  .page-tabs {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none;
+    flex-basis: 100%;
+    margin: 0.85rem 0 0;
+  }
+
+  .site-nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding-bottom: 1.4rem;
+  }
 }
 
 /* REDUCED MOTION */

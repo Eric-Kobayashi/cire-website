@@ -12,7 +12,9 @@
     .map((a) => document.getElementById(a.dataset.rail))
     .filter(Boolean);
 
-  document.documentElement.classList.add(reduced ? "no-motion" : "js-motion");
+  const staticPage = document.body.hasAttribute("data-static");
+  const motion = !reduced && !staticPage;
+  document.documentElement.classList.add(motion ? "js-motion" : "no-motion");
 
   const askForm = document.querySelector(".ask-form");
   if (askForm) {
@@ -55,29 +57,63 @@
     });
   }
 
-  if (reduced) return;
+  const studyTabs = document.querySelector("[data-study-tabs]");
+  if (studyTabs) {
+    const tabs = Array.from(studyTabs.querySelectorAll('[role="tab"]'));
+    const select = (tab) => {
+      for (const t of tabs) {
+        const on = t === tab;
+        t.setAttribute("aria-selected", on ? "true" : "false");
+        t.tabIndex = on ? 0 : -1;
+        const panel = document.getElementById(t.getAttribute("aria-controls"));
+        if (panel) panel.hidden = !on;
+      }
+    };
+    studyTabs.addEventListener("click", (e) => {
+      const tab = e.target.closest('[role="tab"]');
+      if (tab) select(tab);
+    });
+    studyTabs.addEventListener("keydown", (e) => {
+      const i = tabs.indexOf(document.activeElement);
+      if (i < 0) return;
+      const next =
+        e.key === "ArrowRight" || e.key === "ArrowDown" ? tabs[(i + 1) % tabs.length] :
+        e.key === "ArrowLeft" || e.key === "ArrowUp" ? tabs[(i - 1 + tabs.length) % tabs.length] :
+        e.key === "Home" ? tabs[0] :
+        e.key === "End" ? tabs[tabs.length - 1] :
+        null;
+      if (!next) return;
+      e.preventDefault();
+      next.focus();
+      select(next);
+    });
+  }
+
+  if (reduced && !staticPage) return;
 
   const clamp = (v) => (v < 0 ? 0 : v > 1 ? 1 : v);
   const ease = (t) => 1 - Math.pow(1 - t, 3);
   const smooth = (t) => t * t * (3 - 2 * t);
 
-  // Big statements light up word by word as they cross the viewport.
-  for (const el of document.querySelectorAll(
-    ".line.statement, .line.punch, .line.tagline"
-  )) {
-    if (el.children.length) continue;
-    const words = el.textContent.trim().split(/\s+/);
-    el.textContent = "";
-    el.classList.add("split");
-    const last = Math.max(words.length - 1, 1);
-    words.forEach((w, i) => {
-      const span = document.createElement("span");
-      span.className = "w";
-      span.style.setProperty("--wi", i);
-      span.style.setProperty("--wn", last);
-      span.textContent = w;
-      el.append(span, document.createTextNode(" "));
-    });
+  if (motion) {
+    // Big statements light up word by word as they cross the viewport.
+    for (const el of document.querySelectorAll(
+      ".line.statement, .line.punch, .line.tagline"
+    )) {
+      if (el.children.length) continue;
+      const words = el.textContent.trim().split(/\s+/);
+      el.textContent = "";
+      el.classList.add("split");
+      const last = Math.max(words.length - 1, 1);
+      words.forEach((w, i) => {
+        const span = document.createElement("span");
+        span.className = "w";
+        span.style.setProperty("--wi", i);
+        span.style.setProperty("--wn", last);
+        span.textContent = w;
+        el.append(span, document.createTextNode(" "));
+      });
+    }
   }
 
   let ticking = false;
@@ -86,54 +122,56 @@
     ticking = false;
     const vh = window.innerHeight;
 
-    for (const el of reveals) {
-      const r = el.getBoundingClientRect();
-      if (r.bottom < -vh * 0.5 || r.top > vh * 1.6) continue;
-      // brightens across a wide band: begins at the viewport edge, settled by 58%
-      const enter = ease(clamp((vh * 1.02 - r.top) / (vh * 0.44)));
-      // recedes only after it has nearly left the top
-      const leave = ease(clamp((vh * 0.12 - r.bottom) / (vh * 0.25)));
-      el.style.setProperty("--enter", enter.toFixed(3));
-      el.style.setProperty("--leave", leave.toFixed(3));
-    }
+    if (motion) {
+      for (const el of reveals) {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < -vh * 0.5 || r.top > vh * 1.6) continue;
+        // brightens across a wide band: begins at the viewport edge, settled by 58%
+        const enter = ease(clamp((vh * 1.02 - r.top) / (vh * 0.44)));
+        // recedes only after it has nearly left the top
+        const leave = ease(clamp((vh * 0.12 - r.bottom) / (vh * 0.25)));
+        el.style.setProperty("--enter", enter.toFixed(3));
+        el.style.setProperty("--leave", leave.toFixed(3));
+      }
 
-    // One block at a time holds focus: whichever fills the reading band most.
-    const bandTop = vh * 0.26;
-    const bandBottom = vh * 0.74;
-    let best = 0;
-    const scores = beats.map((el) => {
-      const r = el.getBoundingClientRect();
-      const s = Math.max(
-        0,
-        Math.min(r.bottom, bandBottom) - Math.max(r.top, bandTop)
-      );
-      if (s > best) best = s;
-      return s;
-    });
-    beats.forEach((el, i) => {
-      const share = best > 0 ? scores[i] / best : 0;
-      el.style.setProperty(
-        "--bf",
-        smooth(clamp((share - 0.5) / 0.45)).toFixed(3)
-      );
-    });
+      // One block at a time holds focus: whichever fills the reading band most.
+      const bandTop = vh * 0.26;
+      const bandBottom = vh * 0.74;
+      let best = 0;
+      const scores = beats.map((el) => {
+        const r = el.getBoundingClientRect();
+        const s = Math.max(
+          0,
+          Math.min(r.bottom, bandBottom) - Math.max(r.top, bandTop)
+        );
+        if (s > best) best = s;
+        return s;
+      });
+      beats.forEach((el, i) => {
+        const share = best > 0 ? scores[i] / best : 0;
+        el.style.setProperty(
+          "--bf",
+          smooth(clamp((share - 0.5) / 0.45)).toFixed(3)
+        );
+      });
 
-    for (const s of sections) {
-      const r = s.getBoundingClientRect();
-      const p = clamp((vh * 0.62 - r.top) / r.height);
-      s.style.setProperty("--sp", p.toFixed(3));
-    }
+      for (const s of sections) {
+        const r = s.getBoundingClientRect();
+        const p = clamp((vh * 0.62 - r.top) / r.height);
+        s.style.setProperty("--sp", p.toFixed(3));
+      }
 
-    for (const el of parallax) {
-      const r = el.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > vh) continue;
-      const mid = (r.top + r.height / 2) / vh; // 0 top .. 1 bottom
-      el.style.setProperty("--shift", (mid - 0.5).toFixed(3));
-    }
+      for (const el of parallax) {
+        const r = el.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) continue;
+        const mid = (r.top + r.height / 2) / vh; // 0 top .. 1 bottom
+        el.style.setProperty("--shift", (mid - 0.5).toFixed(3));
+      }
 
-    if (hero) {
-      const p = clamp(window.scrollY / (vh * 0.85));
-      hero.style.setProperty("--out", p.toFixed(3));
+      if (hero) {
+        const p = clamp(window.scrollY / (vh * 0.85));
+        hero.style.setProperty("--out", p.toFixed(3));
+      }
     }
 
     nav?.classList.toggle("is-solid", window.scrollY > 40);

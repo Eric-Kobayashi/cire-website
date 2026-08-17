@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Case Study · cire.works</title>
+  <meta name="description" content="Cire case study: scaling MoCHI so protein energy-architecture analysis can keep up with experimental data." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-inner">
+
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <header class="site-nav">
+    <a class="brand" href="index.html">cire.works</a>
+    <nav class="page-tabs" aria-label="Pages">
+      <a href="index.html">Home</a>
+      <span class="page-tabs-sep" aria-hidden="true">·</span>
+      <a href="about.html">About</a>
+      <span class="page-tabs-sep" aria-hidden="true">·</span>
+      <a href="model.html">Model</a>
+      <span class="page-tabs-sep" aria-hidden="true">·</span>
+      <a href="case-study.html" aria-current="page">Case Study</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="case">
+      <div class="case-inner">
+        <h1 class="case-title">Case Study</h1>
+
+        <div class="study-tabs" role="tablist" aria-label="Case studies" data-study-tabs>
+          <button type="button" role="tab" id="tab-mochi" aria-controls="panel-mochi" aria-selected="true" tabindex="0">MoCHI</button>
+        </div>
+
+        <article class="study-panel" id="panel-mochi" role="tabpanel" aria-labelledby="tab-mochi">
+          <figure class="study-logo">
+            <a href="https://github.com/lehner-lab/MoCHI" target="_blank" rel="noopener">
+              <img src="assets/mochi-logo.png" alt="MoCHI logo" width="239" height="176" />
+            </a>
+          </figure>
+          <div class="study-body">
+            <p class="case-lead">What happens when your experiment scales up, but your analysis code fails to keep up?</p>
+            <p>Researchers in the <a href="https://www.sanger.ac.uk/group/lehner-group/" target="_blank" rel="noopener">Lehner group</a> have measured millions of protein mutants experimentally and are using a modelling tool (<a href="https://github.com/lehner-lab/MoCHI" target="_blank" rel="noopener">MoCHI</a>) to map the energy architecture. They then faced a data analysis roadblock: the previous version of the algorithm would consume over 14TB of RAM — an amount that even the largest high-performance computing clusters would struggle to provide.</p>
+            <p>While working at the Wellcome Sanger Institute as a research engineer, Eric Hidari helped develop a new version of MoCHI that consumes a tiny fraction of the RAM (&lt;20GB), better utilises the GPU for speed, and integrates with Nextflow to make more efficient use of HPC resources. By harnessing an AI coding agent, we completed the development in four weeks. Working closely with a Lehner group scientist, we made incremental changes while validating the results against test datasets. We unblocked crucial scientific research and incorporated “vibe-coded” functionality into the main codebase in a validated form that could be used for future large-scale analysis.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Cire Consulting Ltd. All rights reserved.</p>
+  </footer>
+
+  <script src="main.js" defer></script>
+</body>
+</html>
