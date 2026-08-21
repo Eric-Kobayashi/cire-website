@@ -80,7 +80,11 @@ a:hover {
   inset: 0 0 auto;
   z-index: 40; /* above full-bleed images; session heads stay under them */
   padding: 1.15rem var(--gutter) 2.4rem;
-  pointer-events: none;
+  pointer-events: none; /* the bar spans the page; only its links should catch clicks */
+}
+
+.site-nav a {
+  pointer-events: auto;
 }
 
 .site-nav::before {
