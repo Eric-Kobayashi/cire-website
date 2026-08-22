@@ -3,3 +3,7 @@
 *.log
 archive/
 latex/
+*.md
+!readme.md
+!README.md
+

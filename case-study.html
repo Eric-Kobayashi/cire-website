@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=20260817a" />
+  <link rel="stylesheet" href="styles.css?v=20260822a" />
 </head>
 <body class="page-inner">
 
@@ -44,8 +44,9 @@
           </figure>
           <div class="study-body">
             <p class="case-lead">What happens when your experiment scales up, but your analysis code fails to keep up?</p>
-            <p>Researchers in the <a href="https://www.sanger.ac.uk/group/lehner-group/" target="_blank" rel="noopener">Lehner group</a> have measured millions of protein mutants experimentally and are using a modelling tool (<a href="https://github.com/lehner-lab/MoCHI" target="_blank" rel="noopener">MoCHI</a>) to map the energy architecture. They then faced a data analysis roadblock: the previous version of the algorithm would consume over 14TB of RAM — an amount that even the largest high-performance computing clusters would struggle to provide.</p>
+            <p>Researchers in the <a href="https://www.sanger.ac.uk/group/lehner-group/" target="_blank" rel="noopener">Lehner group</a> have measured millions of protein mutants experimentally and are using a modelling tool (<a href="https://github.com/lehner-lab/MoCHI" target="_blank" rel="noopener">MoCHI</a><a class="fn-ref" href="#mochi-note" aria-describedby="mochi-note">*</a>) to map the energy architecture. They then faced a data analysis roadblock: the previous version of the algorithm would consume over 14TB of RAM — an amount that even the largest high-performance computing clusters would struggle to provide.</p>
             <p>While working at the Wellcome Sanger Institute as a research engineer, Eric Hidari helped develop a new version of MoCHI that consumes a tiny fraction of the RAM (&lt;20GB), better utilises the GPU for speed, and integrates with Nextflow to make more efficient use of HPC resources. By harnessing an AI coding agent, we completed the development in four weeks. Working closely with a Lehner group scientist, we made incremental changes while validating the results against test datasets. We unblocked crucial scientific research and incorporated “vibe-coded” functionality into the main codebase in a validated form that could be used for future large-scale analysis.</p>
+            <p class="study-note" id="mochi-note">* MoCHI is software originally developed by Faure and Lehner (<a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-024-03444-y" target="_blank" rel="noopener"><cite>Genome Biology</cite>, 2024</a>).</p>
           </div>
         </article>
       </div>

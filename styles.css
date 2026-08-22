@@ -1106,6 +1106,27 @@ strong {
   margin-bottom: 0;
 }
 
+.fn-ref {
+  margin-left: 0.05em;
+  font-size: 0.72em;
+  line-height: 0;
+  text-decoration: none;
+  vertical-align: super;
+}
+
+.study-body .study-note {
+  margin: 1.75rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  color: var(--ink-muted);
+}
+
+.study-note cite {
+  font-style: italic;
+}
+
 /* FOOTER */
 .site-footer {
   padding: 0 var(--gutter) clamp(2rem, 6vh, 3.5rem);
